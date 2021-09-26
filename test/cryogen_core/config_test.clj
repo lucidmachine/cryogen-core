@@ -22,6 +22,7 @@
    :archive-group-format         "yyyy MMMM"
    :sass-src                     []
    :sass-path                    "sass"
+   :sass-opts                    ["--update"]
    :theme                        "blue"
    :resources                    ["img"]
    :keep-files                   [".git"]

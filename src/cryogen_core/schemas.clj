@@ -45,6 +45,7 @@
    (s/optional-key :archive-group-format) s/Str
    (s/optional-key :sass-src)             [s/Str]
    (s/optional-key :sass-path)            s/Str
+   (s/optional-key :sass-opt)             [s/Str]
    :theme                                 s/Str
    (s/optional-key :resources)            [s/Str]
    (s/optional-key :keep-files)           [s/Str]

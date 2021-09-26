@@ -25,14 +25,15 @@
          (map #(.getName ^java.io.File %)))))
 
 (defn compile-sass-dir!
-  "Given a sass directory (or file), output the resulting CSS in the
-   same dir. All error handling is done by sh / launching the sass
-   command."
-  [{:keys [sass-dir sass-path]}]
+  "Given a sass directory (or file) and a vec of sass command options, output
+  the resulting CSS in the same dir. All error handling is done by 
+  sh / launching the sass command."
+  [{:keys [sass-dir sass-path sass-opts]}]
   (shell/with-sh-dir
     "."
-    (let [sass-argument (str sass-dir ":" sass-dir)]
-      (sh sass-path "--update" sass-argument))))
+    (let [sass-argument (str sass-dir ":" sass-dir)
+          sass-cmd (flatten (list sass-path sass-opts sass-argument))]
+      (eval `(sh ~@sass-cmd)))))
 
 (defn compile-sass->css!
   "Given a directory or directories in sass-src, looks for all Sass files and compiles them.
